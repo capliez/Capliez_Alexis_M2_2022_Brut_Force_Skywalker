@@ -5,6 +5,8 @@ module.exports = {
   MIN: 3,
   MAX: 3,
   URL: "http://localhost:3000/",
-  IDINPUT: "standard-basic",
+  IDINPUTPASSWORD: "standard-basic",
+  IDINPUTUSERNAME: null,
+  USERNAME: null,
   IDBUTTON: "btnLogin"
 }

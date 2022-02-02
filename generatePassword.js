@@ -19,13 +19,13 @@ async function generateNoRecursion(page, len, chars)
     // While all indices in set of chars
     while (indices[0] < chars.length)
     {
-        if(await page.$(`#${UTILS.IDINPUT}`)) {
+        if(await page.$(`#${UTILS.IDINPUTPASSWORD}`)) {
             // Print current solution
         var str = "";
         for (var i = 0; i < indices.length; ++i)
             str += chars[indices[i]];
         //console.log(str);
-        await page.type(`#${UTILS.IDINPUT}`, str)
+        await page.type(`#${UTILS.IDINPUTPASSWORD}`, str)
         await page.click(`#${UTILS.IDBUTTON}`)
 
         // Go to next solution by incrementing last index and adjusting

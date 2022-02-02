@@ -7,6 +7,9 @@ const scraperObject = {
 		let page = await browser.newPage();
 		console.log(`Navigating to ${this.url}...`);
 		await page.goto(this.url);
+		if(await page.$(`#${UTILS.IDINPUTUSERNAME}`)) {
+			await page.type(`#${UTILS.IDINPUTUSERNAME}`, UTILS.USERNAME)
+		}
 		await generatePassword.brute(page, UTILS.MIN, UTILS.MAX)
 		await browser.close()
 	}

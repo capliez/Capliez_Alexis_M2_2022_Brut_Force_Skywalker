@@ -22,12 +22,14 @@ Step to install:
 In the Utils.js file, modify the following settings:
 
 1. `URL` of site \*
-2. `IDINPU`T the password field \*
+2. `IDINPUTPASSWORD` the password field \*
 3. `IDBUTTON` the validate button \*
-4. `MAJ` uppercase characters
-5. `SPECIALS` special characters
-6. `NUMBERS` numeric characters
-7. `MIN` minimum number of characters
-8. `MAX` maximum number of characters
+4. `USERNAME` the username field
+5. `IDINPUTUSERNAME` the username field
+6. `MAJ` uppercase characters
+7. `SPECIALS` special characters
+8. `NUMBERS` numeric characters
+9. `MIN` minimum number of characters
+10. `MAX` maximum number of characters
 
 Once the settings are updated, you can run this command: `npm run start`

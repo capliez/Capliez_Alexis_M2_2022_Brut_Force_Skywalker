@@ -13,6 +13,7 @@ async function generateNoRecursion(page, len, chars)
 {
     // Indices that indicate what char to use on corresponding place.
     var indices = [];
+    var lastWordTest = "";
     for (var i = 0; i < len; ++i)
         indices.push(0);
 
@@ -25,9 +26,15 @@ async function generateNoRecursion(page, len, chars)
         for (var i = 0; i < indices.length; ++i)
             str += chars[indices[i]];
         //console.log(str);
-        await page.type(`#${UTILS.IDINPUTPASSWORD}`, str)
+        await page.focus(`#${UTILS.IDINPUTPASSWORD}`);
+        await page.keyboard.press('Home');
+        await page.keyboard.down('Control');
+        await page.keyboard.press('A');
+        await page.keyboard.up('Control');
+        await page.keyboard.press('Delete')
+        await page.keyboard.type(str);
         await page.click(`#${UTILS.IDBUTTON}`)
-
+        lastWordTest = str
         // Go to next solution by incrementing last index and adjusting
         // if it is out of chars set.
         indices[len-1]++;
@@ -37,7 +44,7 @@ async function generateNoRecursion(page, len, chars)
             indices[i-1]++;
         }
         } else {
-            return;
+            return lastWordTest;
         }
 
         
@@ -47,7 +54,7 @@ async function generateNoRecursion(page, len, chars)
 async function brute(page, min, max)
 {
     for (var l = min; l <= max; ++l)
-        await generateNoRecursion(page, l, letters(UTILS.MAJ, UTILS.NUMBERS, UTILS.SPECIALS));
+        return await generateNoRecursion(page, l, letters(UTILS.MAJ, UTILS.NUMBERS, UTILS.SPECIALS));
 }
 
 module.exports = {

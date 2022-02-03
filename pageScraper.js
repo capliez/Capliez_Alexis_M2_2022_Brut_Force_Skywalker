@@ -10,7 +10,8 @@ const scraperObject = {
 		if(await page.$(`#${UTILS.IDINPUTUSERNAME}`)) {
 			await page.type(`#${UTILS.IDINPUTUSERNAME}`, UTILS.USERNAME)
 		}
-		await generatePassword.brute(page, UTILS.MIN, UTILS.MAX)
+		var lastWord = await generatePassword.brute(page, UTILS.MIN, UTILS.MAX)
+		console.log(`The password is ${lastWord}`)
 		await browser.close()
 	}
 }
